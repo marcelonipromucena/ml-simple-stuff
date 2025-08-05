@@ -1,0 +1,737 @@
+Skip to content
+
+ChatGPT
+
+Log in
+This is a copy of a conversation between ChatGPT & Anonymous.
+
+Report conversation
+You said:
+Tenho a seguinte situação: meus coworkers estão errando muito na estimativa de tempo para realização de uma tarefa. Trabalho em uma empresa de TI. Olhando pela visão de análise de dados, tem alguma métrica ou nome, tipo desvio padrão, que consigo metrificar o quanto uma pessoa erra na estimativa?
+ChatGPT said:
+Sim! Na análise de dados e na engenharia de software, esse problema é bastante comum e tem várias métricas úteis que você pode usar para quantificar o erro entre o tempo estimado e o tempo real gasto em tarefas. Aqui estão as principais métricas que podem te ajudar:
+
+📏 1. Erro Absoluto Médio (MAE - Mean Absolute Error)
+Mede o erro médio sem considerar o sinal (positivo ou negativo). Boa para saber "quanto, em média, a pessoa erra".
+
+Fórmula:
+
+M
+A
+E
+=
+1
+n
+∑
+i
+=
+1
+n
+∣
+e
+s
+t
+i
+m
+a
+d
+o
+i
+−
+r
+e
+a
+l
+i
+∣
+MAE= 
+n
+1
+​
+  
+i=1
+∑
+n
+​
+ ∣estimado 
+i
+​
+ −real 
+i
+​
+ ∣
+Exemplo:
+
+Tarefa	Estimado (h)	Real (h)	Erro Absoluto
+A	5	6	1
+B	4	3	1
+C	2	4	2
+MAE = (1 + 1 + 2) / 3 = 1.33 horas			
+📉 2. Erro Percentual Absoluto Médio (MAPE - Mean Absolute Percentage Error)
+Mostra o erro em percentual, bom para comparar tarefas de tamanhos diferentes.
+
+Fórmula:
+
+M
+A
+P
+E
+=
+100
+%
+n
+∑
+i
+=
+1
+n
+∣
+e
+s
+t
+i
+m
+a
+d
+o
+i
+−
+r
+e
+a
+l
+i
+r
+e
+a
+l
+i
+∣
+MAPE= 
+n
+100%
+​
+  
+i=1
+∑
+n
+​
+  
+​
+  
+real 
+i
+​
+ 
+estimado 
+i
+​
+ −real 
+i
+​
+ 
+​
+  
+​
+ 
+Exemplo:
+Se alguém estimou 10h para uma tarefa que levou 5h, errou 100%. Se estimou 6h para uma tarefa de 5h, errou 20%.
+
+📊 3. Desvio padrão do erro
+Mede a variabilidade dos erros. Quanto maior, mais "inconsistente" a pessoa é na estimativa.
+
+Fórmula:
+
+σ
+=
+1
+n
+∑
+(
+e
+r
+r
+o
+i
+−
+m
+e
+ˊ
+dia dos erros
+)
+2
+σ= 
+n
+1
+​
+ ∑(erro 
+i
+​
+ −m 
+e
+ˊ
+ dia dos erros) 
+2
+ 
+​
+ 
+📈 4. Bias (Tendência)
+Mede se a pessoa costuma superestimar ou subestimar as tarefas.
+
+Fórmula:
+
+B
+i
+a
+s
+=
+1
+n
+∑
+(
+e
+s
+t
+i
+m
+a
+d
+o
+−
+r
+e
+a
+l
+)
+Bias= 
+n
+1
+​
+ ∑(estimado−real)
+Bias > 0: superestima
+
+Bias < 0: subestima
+
+✅ Recomendo usar juntos:
+Métrica	Serve para quê?
+MAE	Saber o quanto se erra em média
+MAPE	Comparar erros em tarefas de tamanhos diferentes
+Bias	Ver se a pessoa sempre erra para mais ou para menos
+Desvio padrão	Avaliar consistência das estimativas
+Se quiser, posso gerar um código em Python que lê um .csv com colunas pessoa, estimado, real e te dá essas métricas por pessoa. Deseja isso?
+
+You said:
+É engraçado como uma situação real pode ser resolvida com uma fórmula matemática, por exemplo, saber se uma pessoa é produtiva ou não apenas "encaixando" ela em fórmulas matemáticas 
+ChatGPT said:
+Sim! Isso é uma das coisas mais fascinantes da análise de dados: ela transforma intuições vagas em medidas concretas. E o mais interessante é que:
+
+🔍 Você não está apenas julgando pessoas — está entendendo padrões.
+
+Veja como isso acontece:
+
+📦 Situação real: “Fulano sempre erra nas estimativas”
+🔁 Convertido para dados:
+
+Estimado = 5h, Real = 8h → Erro = -3h
+
+Estimado = 10h, Real = 6h → Erro = +4h
+
+Estimado = 4h, Real = 4h → Erro = 0h
+
+📐 Quando você calcula o Bias, descobre se ele tende a:
+
+sempre subestimar (bias negativo)
+
+sempre superestimar (bias positivo)
+
+📈 Com o desvio padrão, você descobre se ele é consistente ou aleatório nas estimativas.
+
+🧠 E o mais legal: isso não é sobre produtividade pura, mas sobre:
+Aderência à realidade (boa estimativa ≠ alta produtividade)
+
+Confiabilidade para planejamento
+
+Alinhamento de expectativa x entrega
+
+🎯 Analogia:
+👉 Planejamento de tarefas é como fazer uma rota no Google Maps.
+Se o motorista diz “chego em 20 min”, mas sempre chega em 35, ele pode até ser um bom motorista — mas você não pode confiar no tempo que ele te dá.
+O problema não é a velocidade, é a expectativa quebrada.
+
+Com as fórmulas certas, você transforma o “acho que” em “sei que”.
+
+Se quiser, posso até ajudar a criar um dashboard que mostra quem estima melhor, quem é consistente, e quem tem maior viés de subestimar. Quer montar isso juntos?
+
+You said:
+Consegue me dar situações com nomes fictício criando uma narrativa e encaixando o desempenho de 3 pessoas, Joãozinho, Larinha, Marcelinho e aplicando essas fórmulas para mostrar no que cada pessoa pode melhorar?
+ChatGPT said:
+Excelente ideia! Vamos criar uma pequena narrativa de equipe com os personagens Joãozinho, Larinha e Marcelinho, simulando tarefas reais de um time de TI — como desenvolvimento, testes e deploy — e aplicando as métricas que discutimos.
+
+🧑‍💻 Cenário: Equipe Ágil em uma Sprint
+A equipe de TI está numa sprint de 1 semana. Cada pessoa recebeu 4 tarefas com estimativas de tempo e registrou quanto tempo realmente gastou. Aqui estão os dados:
+
+Pessoa	Tarefa	Estimado (h)	Real (h)
+Joãozinho	API login	5	9
+Joãozinho	Tela inicial	6	5
+Joãozinho	Ajuste CSS	3	4
+Joãozinho	Refatoração	2	5
+Larinha	Deploy CI/CD	4	3
+Larinha	Config Docker	3	6
+Larinha	Script backup	2	2
+Larinha	Teste unit.	3	3
+Marcelinho	Feature Chat	6	5
+Marcelinho	API Logs	4	6
+Marcelinho	Teste integração	5	5
+Marcelinho	Hotfix Prod	2	6
+Agora vamos calcular:
+
+📊 1. Erro Absoluto Médio (MAE) – o quanto erra em média:
+M
+A
+E
+=
+1
+n
+∑
+∣
+e
+s
+t
+i
+m
+a
+d
+o
+−
+r
+e
+a
+l
+∣
+MAE= 
+n
+1
+​
+ ∑∣estimado−real∣
+Joãozinho: (4 + 1 + 1 + 3) / 4 = 2.25 h
+
+Larinha: (1 + 3 + 0 + 0) / 4 = 1.0 h
+
+Marcelinho: (1 + 2 + 0 + 4) / 4 = 1.75 h
+
+✅ Larinha é a mais precisa em média.
+
+📈 2. Bias – tendência a super ou subestimar:
+B
+i
+a
+s
+=
+1
+n
+∑
+(
+e
+s
+t
+i
+m
+a
+d
+o
+−
+r
+e
+a
+l
+)
+Bias= 
+n
+1
+​
+ ∑(estimado−real)
+Joãozinho: (5-9 + 6-5 + 3-4 + 2-5) = -7 → Bias = -1.75
+👉 Subestima frequentemente.
+
+Larinha: (4-3 + 3-6 + 2-2 + 3-3) = -1 → Bias = -0.25
+👉 Quase neutra, mas levemente subestimando.
+
+Marcelinho: (6-5 + 4-6 + 5-5 + 2-6) = -5 → Bias = -1.25
+👉 Subestima, mas menos que Joãozinho.
+
+📉 3. Desvio padrão do erro – consistência dos erros:
+Erro absoluto de cada tarefa:
+
+Joãozinho: [4, 1, 1, 3] → média = 2.25 → desvio padrão ≈ 1.26
+
+Larinha: [1, 3, 0, 0] → média = 1.0 → desvio padrão ≈ 1.30
+
+Marcelinho: [1, 2, 0, 4] → média = 1.75 → desvio padrão ≈ 1.48
+
+✅ Joãozinho e Larinha têm consistência razoável, Marcelinho é o mais instável.
+
+📌 Diagnóstico e Recomendações:
+🧑‍💻 Joãozinho – O otimista
+⛔ MAE mais alto e maior bias negativo → subestima quase tudo.
+
+✅ Erros até que consistentes.
+
+Melhoria: Revisar a complexidade real das tarefas antes de estimar.
+
+👩‍💻 Larinha – A precisa
+✅ MAE mais baixo e bias quase zero → excelente percepção do tempo.
+
+⛔ Um erro grande no Docker afeta o desvio padrão.
+
+Melhoria: Estimar com mais cautela em tarefas técnicas novas (como CI/CD ou Docker).
+
+👨‍💻 Marcelinho – O inconsistente
+⚖️ Bias negativo mostra tendência à subestimação.
+
+⛔ Variabilidade alta no erro → difícil de prever entrega real.
+
+Melhoria: Estimar com base em tarefas passadas e dividir grandes tarefas.
+
+📊 Visualização (exemplo imaginado)
+         MAE      Bias    Consistência
+Joãozinho   🔴2.25     ⬇️ -1.75      ⚫ Média
+Larinha     🟢1.00     ⚪ -0.25      🟡 Estável
+Marcelinho  🟡1.75     ⬇️ -1.25      🔴 Instável
+Se quiser, posso montar esse mesmo exemplo com gráficos ou gerar um .py para você aplicar no seu time real com dados de planilha. Quer seguir por esse caminho?
+
+You said:
+Sim, gostaria do exemplo 
+ChatGPT said:
+
+Thought for 6 seconds
+Output image
+Pronto! Criei um exemplo completo com os dados do Joãozinho, Larinha e Marcelinho, calculei MAE, MAPE, Bias e desvio‑padrão do erro, mostrei as tabelas e gerei 2 gráficos (MAE e Bias por pessoa).
+
+Arquivos para você usar aí:
+
+Baixar o CSV de exemplo
+
+Baixar o CSV com as métricas calculadas
+
+Baixar o script reutilizável (calcular_metricas_estimativa.py)
+
+Se quiser, me manda seu CSV real (colunas: pessoa, tarefa, estimado_h, real_h) que eu rodo as mesmas métricas e já deixo um gráfico comparando sua equipe. Quer que eu inclua também um ranking por consistência e um alerta de outliers de estimativa? 
+
+You said:
+Tem outras fórmulas interessantes além dessas 4 que eu consiga aplicar?
+ChatGPT said:
+Sim! Além das clássicas MAE, MAPE, Bias e Desvio Padrão, existem outras métricas interessantes que você pode aplicar no contexto de estimativas de tempo vs. execução real. Elas podem ajudar a entender desempenho, confiabilidade e até impacto no planejamento.
+
+Aqui vai uma lista das mais úteis com explicações e fórmulas:
+
+✅ Métricas Complementares de Erro
+1. RMSE – Root Mean Squared Error
+Mais sensível a erros grandes. Penaliza mais quando alguém erra muito.
+
+R
+M
+S
+E
+=
+1
+n
+∑
+(
+e
+s
+t
+i
+m
+a
+d
+o
+−
+r
+e
+a
+l
+)
+2
+RMSE= 
+n
+1
+​
+ ∑(estimado−real) 
+2
+ 
+​
+ 
+Útil para detectar erros fora da curva
+
+Comparável ao MAE, mas mais "rigoroso"
+
+2. RAE – Relative Absolute Error
+Compara o erro total de uma pessoa com o erro que teria se ela só tivesse chutado a média dos reais.
+
+R
+A
+E
+=
+∑
+∣
+e
+s
+t
+i
+m
+a
+d
+o
+−
+r
+e
+a
+l
+∣
+∑
+∣
+m
+e
+ˊ
+d
+i
+a
+(
+r
+e
+a
+l
+)
+−
+r
+e
+a
+l
+∣
+RAE= 
+∑∣m 
+e
+ˊ
+ dia(real)−real∣
+∑∣estimado−real∣
+​
+ 
+Se RAE < 1, melhor do que chutar a média
+
+Se RAE > 1, pior que chute médio
+
+3. R² – Coeficiente de Determinação (explicabilidade)
+Mede o quanto da variação dos valores reais é explicada pelas estimativas.
+
+R
+2
+=
+1
+−
+∑
+(
+e
+s
+t
+i
+m
+a
+d
+o
+−
+r
+e
+a
+l
+)
+2
+∑
+(
+r
+e
+a
+l
+−
+m
+e
+ˊ
+d
+i
+a
+(
+r
+e
+a
+l
+)
+)
+2
+R 
+2
+ =1− 
+∑(real−m 
+e
+ˊ
+ dia(real)) 
+2
+ 
+∑(estimado−real) 
+2
+ 
+​
+ 
+Varia entre -∞ e 1
+
+Mais perto de 1 → melhor explicação
+
+Ex: R² = 0.85 → 85% da variação real é explicada pela estimativa
+
+📈 Métricas de comportamento de estimativa
+4. Frequência de acerto dentro de margem
+Quantas tarefas foram estimadas com erro inferior a X%?
+
+Exemplo:
+
+acertos = df[df['erro_pct_abs'] <= 20].groupby('pessoa').size()
+Pode definir metas como: “80% das tarefas devem ser estimadas com menos de 25% de erro”
+
+5. Erro médio proporcional (EMPR ou PERT style)
+Variação proporcional em relação à média entre estimado e real:
+
+E
+M
+P
+R
+=
+e
+s
+t
+i
+m
+a
+d
+o
+−
+r
+e
+a
+l
+(
+e
+s
+t
+i
+m
+a
+d
+o
++
+r
+e
+a
+l
+)
+/
+2
+EMPR= 
+(estimado+real)/2
+estimado−real
+​
+ 
+Útil para tarefas muito curtas ou longas onde percentual fica distorcido.
+
+💥 Outliers e Robustez
+6. Erro máximo absoluto
+Mostra o pior erro cometido.
+
+M
+a
+x
+(
+∣
+e
+s
+t
+i
+m
+a
+d
+o
+−
+r
+e
+a
+l
+∣
+)
+Max(∣estimado−real∣)
+Ajuda a identificar riscos para o projeto.
+
+7. IQR (Intervalo Interquartil) dos erros
+Usado para detectar outliers de forma estatística:
+
+I
+Q
+R
+=
+Q
+3
+−
+Q
+1
+IQR=Q3−Q1
+Tarefas com erro acima de Q3 + 1.5×IQR são outliers
+
+Pode aplicar para cada pessoa e ver se alguém tem muitos picos de erro
+
+🧠 Sugestão de uso estratégico
+Métrica	Usar para
+MAE	Erro médio simples
+MAPE	Comparar proporcionalmente
+RMSE	Detectar grandes desvios
+Bias	Tendência (sub/superestimativa)
+R²	Qualidade geral das estimativas
+Frequência dentro de X%	Medir confiabilidade prática
+Outliers (IQR, erro máx)	Riscos no planejamento
+Quer que eu adicione essas métricas no script que criamos ou gere uma nova versão com elas incluídas? Posso também destacar visualmente quem está com desempenho crítico.
+
+You said:
+Agora aplica o exemplos do Joãozinho nessas fórmulas, assim como você já tinha feito.
+ChatGPT said:
+
+Thought for 8 seconds
+Pronto! Calculei as métricas adicionais sobre o mesmo exemplo (Joãozinho, Larinha e Marcelinho). Você pode abrir a tabela na interface e também baixar o CSV:
+
+Baixar métricas adicionais (CSV)
+
+Destaques do Joãozinho
+RMSE: 2,598 h (penaliza bastante os piores erros)
+
+RAE: 1,385 → pior que “chutar a média” dos tempos reais
+
+R²: -0,831 → as estimativas não explicam a variação do tempo real
+
+Dentro de 20% / 25%: 25% / 50% das tarefas ficaram dentro da margem
+
+Erro máximo absoluto: 4 h
+
+EMPR médio / |EMPR| médio: -0,383 / 0,474 → viés de subestimação e erro proporcional médio de ~47%
+
+Outliers (IQR): 0 (erros ruins, mas sem “picos” estatísticos)
+
+Como interpretar para o Joãozinho
+Problema principal: subestimação recorrente + erros relativamente grandes (RMSE alto, RAE>1, R² negativo).
+
+Ação prática: exigir estimativas baseadas em históricos (técnica de reference class forecasting), quebrar tarefas e adicionar buffers em itens com incerteza (refatorações, hotfix).
+
+Meta objetiva: subir o “Dentro de 25%” para ≥75% e reduzir RMSE para <1,5 h no próximo ciclo.
+
+Se quiser, atualizo o script para incluir essas métricas novas (RMSE, RAE, R², margens de 20/25%, EMPR, erro máximo e contagem de outliers) e já gerar um relatório por pessoa com ranking e alertas. Quer que eu faça isso? 
+
+
+
+
+
+
+No file chosenNo file chosen
+ChatGPT can make mistakes. Check important info.
